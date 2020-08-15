@@ -1,0 +1,15 @@
+package.json
+package-lock.json
+node_modules
+.build
+build
+.vscode
+*.css
+*.scss
+*.less
+*.json
+*.min.js
+*.md
+coverage
+dist
+.next

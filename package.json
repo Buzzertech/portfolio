@@ -11,6 +11,11 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
   "dependencies": {
     "@emotion/styled": "^10.0.27",
     "@rebass/preset": "^4.0.5",
@@ -27,6 +32,9 @@
     "@storybook/addon-links": "^6.0.10",
     "@storybook/react": "^6.0.10",
     "babel-loader": "^8.1.0",
+    "husky": "^4.2.5",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1",
     "react-is": "^16.13.1",
     "typescript": "^3.9.7"
   }
