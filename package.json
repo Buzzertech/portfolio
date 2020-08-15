@@ -1,0 +1,33 @@
+{
+  "name": "buzzertech",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Buzzertech <prasadnayak1006@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {
+    "@emotion/styled": "^10.0.27",
+    "@rebass/preset": "^4.0.5",
+    "emotion-theming": "^10.0.27",
+    "next": "^9.5.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "rebass": "^4.0.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@storybook/addon-actions": "^6.0.10",
+    "@storybook/addon-essentials": "^6.0.10",
+    "@storybook/addon-links": "^6.0.10",
+    "@storybook/react": "^6.0.10",
+    "babel-loader": "^8.1.0",
+    "react-is": "^16.13.1",
+    "typescript": "^3.9.7"
+  }
+}
