@@ -19,6 +19,7 @@
   "dependencies": {
     "@emotion/styled": "^10.0.27",
     "@rebass/preset": "^4.0.5",
+    "css-elevation": "^1.0.2",
     "emotion-theming": "^10.0.27",
     "next": "^9.5.2",
     "normalize.css": "^8.0.1",
