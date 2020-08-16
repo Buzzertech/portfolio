@@ -12,6 +12,9 @@ const baseTheme: Theme = {
 		heading: 'Arvo, serif',
 		default: 'inherit'
 	},
+	space: {
+		horizontalLink: ['10px', '15px']
+	},
 	buttons: {
 		primary: {
 			borderRadius: 'default',
@@ -30,6 +33,14 @@ const baseTheme: Theme = {
 			padding: '10px 25px',
 			boxShadow: elevation({ z: 1 }),
 			cursor: 'pointer'
+		},
+		text: {
+			cursor: 'pointer',
+			fontFamily: 'body',
+			padding: 'horizontalLink',
+			color: 'text',
+			backgroundColor: 'transparent',
+			textDecoration: 'underline'
 		}
 	}
 };

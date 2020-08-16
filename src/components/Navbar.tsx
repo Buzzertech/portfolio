@@ -1,19 +1,19 @@
 import React, { FC } from 'react';
-import { Flex, Image, Box, Link } from 'rebass';
+import Link from 'next/link';
+import { Flex, Image, Button } from 'rebass';
 
 const Navbar: FC<{ hideLinks?: boolean }> = ({ hideLinks }) => (
-	<Flex alignItems="center">
-		<Image src={'/logo.png'} width={['50px', '100px']} />
-		<Box mx="auto" />
+	<Flex alignItems="center" height={[50, 100]}>
+		<Image src={'/logo.png'} sx={{ filter: 'invert(.8)' }} width={['50px', '100px']} />
 		{!hideLinks && (
-			<Box>
-				<Link mx={10} href="/work">
-					Work
+			<Flex flex="1" justifyContent="flex-end">
+				<Link href="/work">
+					<Button variant="text">Work</Button>
 				</Link>
-				<Link mx={10} href="/contact">
-					Contact
+				<Link href="/contact">
+					<Button variant="text">Contact</Button>
 				</Link>
-			</Box>
+			</Flex>
 		)}
 	</Flex>
 );
