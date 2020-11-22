@@ -28,7 +28,6 @@ const IndexPage = () => (
 				</RouteLink>
 			</Flex>
 		</Flex>
-		<Box bg="primary" height={20} width="100%" sx={{ justifySelf: 'flex-end' }}></Box>
 	</>
 );
 

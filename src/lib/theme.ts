@@ -56,7 +56,7 @@ const baseTheme: Theme = {
 const lightTheme: Theme = {
 	colors: {
 		primary: '#222222',
-		secondary: '#e9f1f7',
+		secondary: '#cccccc',
 		background: '#fff',
 		text: '#222222',
 		plain: 'white'

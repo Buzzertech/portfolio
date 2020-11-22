@@ -16,6 +16,7 @@ const RootApp: FC<AppProps> = ({ Component, pageProps, router }) => (
 		<ThemeProvider theme={theme.light}>
 			<Flex overflowY="auto" flexDirection="column" bg="background" color="text" width="100%" minHeight="100vh">
 				<Component {...pageProps} />
+				<Box bg="primary" height={30} width="100%" sx={{ justifySelf: 'flex-end' }}></Box>
 			</Flex>
 		</ThemeProvider>
 	</>
