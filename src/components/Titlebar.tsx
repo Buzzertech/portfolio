@@ -4,13 +4,13 @@ import { Heading } from 'rebass';
 import Navbar from './Navbar';
 
 const Titlebar: FC<{ title: string }> = ({ title }) => {
-	const { ref, inView } = useInView({
+	const { ref, inView, entry } = useInView({
 		threshold: 1
 	});
 
 	return (
 		<>
-			<Navbar title={!inView && title} />
+			<Navbar title={!inView && entry?.target && title} />
 			<Heading
 				fontSize={['3em', '5em', '8em']}
 				letterSpacing={15}
