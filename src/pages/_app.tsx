@@ -10,15 +10,11 @@ import { AppProps } from 'next/app';
 const RootApp: FC<AppProps> = ({ Component, pageProps, router }) => (
 	<>
 		<Head>
-			<link
-				href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap&text=buzzertech"
-				rel="stylesheet"
-			/>
-			<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+			<link rel="preconnect" href="https://fonts.gstatic.com" />
+			<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap" rel="stylesheet" />
 		</Head>
 		<ThemeProvider theme={theme.light}>
-			<Flex flexDirection="column" bg="background" color="text" minHeight="100vh">
-				<Navbar hideLinks={router.pathname === '/'} />
+			<Flex overflowY="auto" flexDirection="column" bg="background" color="text" width="100%" minHeight="100vh">
 				<Component {...pageProps} />
 			</Flex>
 		</ThemeProvider>

@@ -8,9 +8,17 @@ const baseTheme: Theme = {
 		circle: 1000
 	},
 	fonts: {
-		body: 'Lato, sans-serif',
-		heading: 'Arvo, serif',
-		default: 'inherit'
+		body: 'Poppins, sans-serif',
+		heading: 'Poppins, sans-serif'
+	},
+	fontSizes: {
+		body: '18px',
+		heading: ['24px', '32px', '40px']
+	},
+	fontWeights: {
+		body: 400,
+		heading: 800,
+		default: 400
 	},
 	space: {
 		horizontalLink: ['10px', '15px']
@@ -47,10 +55,10 @@ const baseTheme: Theme = {
 
 const lightTheme: Theme = {
 	colors: {
-		primary: '#2274a5',
+		primary: '#222222',
 		secondary: '#e9f1f7',
-		background: '#e7dfc6',
-		text: '#08090a',
+		background: '#fff',
+		text: '#222222',
 		plain: 'white'
 	}
 };

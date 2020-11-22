@@ -1,30 +1,34 @@
 import React from 'react';
 import Head from 'next/head';
-import { Flex, Heading, Box, Button } from 'rebass';
-import Link from 'next/link';
+import { Flex, Heading, Box, Button, Text } from 'rebass';
+import { constants } from '../lib/constants';
+import RouteLink from '../components/RouteLink';
 
 const IndexPage = () => (
 	<>
 		<Head>
 			<title>Home | Buzzertech</title>
 		</Head>
-		<Flex flexDirection="column" alignItems="center" justifyContent="center" flex={1}>
-			<Heading fontSize={[5, 6, 7]} color="text" sx={{ textDecoration: 'underline' }}>
-				buzzertech
+		<Flex flexDirection="column" px={[10, 10, '10%']} alignItems="flex-start" justifyContent="center" flex={1}>
+			<Heading letterSpacing={-1.5} fontSize="heading" color="text">
+				bzr.
 			</Heading>
-			<Box my={10}>
-				<Link href="/work">
-					<Button mx={2} variant="primary">
-						My work
-					</Button>
-				</Link>
-				<Link href="/contact">
-					<Button mx={2} variant="secondary">
-						Contact
-					</Button>
-				</Link>
-			</Box>
+			<Text my={10} fontFamily="body" fontWeight="body">
+				{constants.HOMEPAGE_BIO}
+			</Text>
+			<Flex width="100%" sx={{ fontFamily: 'body', fontWeight: 'body', color: 'primary' }}>
+				<RouteLink marginRight={5} href="/about">
+					About
+				</RouteLink>
+				<RouteLink mx={5} href="/work">
+					Work
+				</RouteLink>
+				<RouteLink marginLeft={5} href="/contact">
+					Contact
+				</RouteLink>
+			</Flex>
 		</Flex>
+		<Box bg="primary" height={20} width="100%" sx={{ justifySelf: 'flex-end' }}></Box>
 	</>
 );
 
