@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
 import { Flex, Image, Button } from 'rebass';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 const Navbar: FC<{ hideLinks?: boolean }> = ({ hideLinks }) => (
 	<Flex alignItems="center" height={[50, 100]}>
@@ -13,6 +15,11 @@ const Navbar: FC<{ hideLinks?: boolean }> = ({ hideLinks }) => (
 				<Link href="/contact">
 					<Button variant="text">Contact</Button>
 				</Link>
+				<a href="https://github.com/buzzertech" target="_blank">
+					<Button variant="text">
+						<FontAwesomeIcon icon={faGithub} />
+					</Button>
+				</a>
 			</Flex>
 		)}
 	</Flex>
