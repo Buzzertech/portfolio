@@ -3,13 +3,14 @@ import Head from 'next/head';
 import { Flex, Heading, Box, Button, Text } from 'rebass';
 import { constants } from '../lib/constants';
 import RouteLink from '../components/RouteLink';
+import PageContainer from '../components/PageContainer';
 
 const IndexPage = () => (
 	<>
 		<Head>
 			<title>Home | Buzzertech</title>
 		</Head>
-		<Flex flexDirection="column" px={[10, 10, '10%']} alignItems="flex-start" justifyContent="center" flex={1}>
+		<PageContainer justifyContent="center">
 			<Heading letterSpacing={-1.5} fontSize="heading" color="text">
 				bzr.
 			</Heading>
@@ -27,7 +28,7 @@ const IndexPage = () => (
 					Contact
 				</RouteLink>
 			</Flex>
-		</Flex>
+		</PageContainer>
 	</>
 );
 

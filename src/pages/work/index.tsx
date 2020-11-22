@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Head from 'next/head';
 import React from 'react';
 import { Box, Flex, Heading, Text } from 'rebass';
+import PageContainer from '../../components/PageContainer';
 import RouteLink from '../../components/RouteLink';
 import Titlebar from '../../components/Titlebar';
 import { constants } from '../../lib/constants';
@@ -14,7 +15,7 @@ const WorkLandingPage = () => {
 				<title>Work | Bzr</title>
 			</Head>
 			<Titlebar title={constants.WORK_LANDING_PAGE_TITLE} />
-			<Flex flexDirection="column" px={[10, 30, 50]} alignItems="flex-start" flex={1}>
+			<PageContainer>
 				<Box marginTop={[30, 50, 130]}>
 					<RouteLink href="/work/engineering">
 						<Flex sx={{ cursor: 'pointer', svg: { width: ['2em', '3em'] } }} alignItems="center">
@@ -50,7 +51,7 @@ const WorkLandingPage = () => {
 						{constants.WORK_DESIGN_SUBTEXT}
 					</Text>
 				</Box>
-			</Flex>
+			</PageContainer>
 		</>
 	);
 };
