@@ -14,9 +14,9 @@ const Titlebar: FC<{ title: string }> = ({ title }) => {
 			<Heading
 				fontSize={['3em', '5em', '8em']}
 				letterSpacing={15}
-				sx={{ textTransform: 'lowercase' }}
 				color="secondary"
 				px={[10, 30, 50]}
+				sx={{ textTransform: 'lowercase', wordBreak: 'break-word' }}
 				ref={ref}
 			>
 				{title}

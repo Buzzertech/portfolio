@@ -49,7 +49,12 @@ const WorkListingPage: NextComponentType = ({}) => {
 				<Box
 					my={50}
 					display="grid"
-					sx={{ gridTemplateColumns: 'repeat(3, 1fr)', columnGap: '50px', rowGap: '50px' }}
+					width="100%"
+					sx={{
+						gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 350px))',
+						columnGap: '50px',
+						rowGap: '50px'
+					}}
 				>
 					{items.map(item => (
 						<RouteLink href={`/work/${query.category}/${item.id}`} key={item.id}>
