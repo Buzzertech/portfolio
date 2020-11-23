@@ -13,14 +13,7 @@ const RootApp: FC<AppProps> = ({ Component, pageProps, router }) => (
 			<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap" rel="stylesheet" />
 		</Head>
 		<ThemeProvider theme={theme.light}>
-			<Flex
-				overflowY="auto"
-				flexDirection="column"
-				bg="background"
-				color="text"
-				overflowX="hidden"
-				minHeight="100vh"
-			>
+			<Flex flexDirection="column" bg="background" color="text" minHeight="100vh">
 				<Component {...pageProps} />
 				<Box bg="primary" height={30} width="100%" sx={{ justifySelf: 'flex-end' }}></Box>
 			</Flex>

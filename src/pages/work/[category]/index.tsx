@@ -31,7 +31,7 @@ const items = [
 	{
 		id: 'serum-2017',
 		name: 'Serum',
-		isPinned: true,
+		isPinned: false,
 		labels: ['Banner', 'Profile picture']
 	}
 ];

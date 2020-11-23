@@ -12,8 +12,8 @@ const baseTheme: Theme = {
 		heading: 'Poppins, sans-serif'
 	},
 	fontSizes: {
-		body: '18px',
-		heading: ['24px', '32px', '40px']
+		body: 18,
+		heading: '40px'
 	},
 	fontWeights: {
 		body: 400,

@@ -5,12 +5,21 @@ import Navbar from './Navbar';
 
 const Titlebar: FC<{ title: string }> = ({ title }) => {
 	const { ref, inView, entry } = useInView({
-		threshold: 1
+		threshold: 0.5
 	});
 
 	return (
 		<>
-			<Navbar title={!inView && entry?.target && title} />
+			<Navbar
+				title={!inView && entry?.target && title}
+				sx={{
+					position: 'sticky',
+					top: '0px',
+					borderBottomWidth: '1px',
+					borderBottomColor: 'secondary',
+					borderBottomStyle: 'solid'
+				}}
+			/>
 			<Heading
 				fontSize={['3em', '5em', '8em']}
 				letterSpacing={15}
