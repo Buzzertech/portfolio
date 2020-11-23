@@ -4,7 +4,7 @@ import RouteLink from './RouteLink';
 
 const Navbar: FC<{ title?: string | false } & Omit<FlexProps, 'title' | 'children'>> = ({ title, ...props }) => (
 	<Flex px={[10, 30, 50]} py={10} alignItems="center" minHeight={[50, 70]} bg="background" {...props}>
-		<RouteLink href="/">
+		<RouteLink href="/" sx={{ cursor: 'pointer' }}>
 			<Heading letterSpacing={-1.5} fontSize={[24, 32, 40]} color="text">
 				bzr.
 			</Heading>
