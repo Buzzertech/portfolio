@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import Link from 'next/link';
 import { Link as LinkComponent, LinkProps } from 'rebass';
 
-const RouteLink: FC<LinkProps> = ({ href, ...props }) => {
+const RouteLink: FC<LinkProps & { asAnchor: boolean }> = ({ href, asAnchor, ...props }) => {
 	return (
 		<Link href={href as string}>
-			<LinkComponent {...props} />
+			<LinkComponent href={(asAnchor && href) || undefined} {...props} />
 		</Link>
 	);
 };
