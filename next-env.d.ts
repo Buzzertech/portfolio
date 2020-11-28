@@ -3,6 +3,8 @@
 
 type PortfolioResource = {
 	id: string;
+	isPinned: boolean;
+	type: PortfolioCategory;
 	name: string;
 	labels: Array<string>;
 	story?: string;

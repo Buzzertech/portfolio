@@ -6,3 +6,10 @@ export enum constants {
 	WORK_ENGINEERING_SUBTEXT = 'Disclaimer: You are about to witness some serious, kickass tech',
 	WORK_DESIGN_SUBTEXT = 'Fresh, hot dzns right at your doorstep'
 }
+
+export const config = {
+	contentful: {
+		accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || '',
+		spaceId: process.env.CONTENTFUL_SPACE_ID || ''
+	}
+};
