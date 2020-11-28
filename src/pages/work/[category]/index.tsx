@@ -52,8 +52,8 @@ const WorkListingPage: NextComponentType = ({}) => {
 					width="100%"
 					sx={{
 						gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 350px))',
-						columnGap: '50px',
-						rowGap: '50px'
+						columnGap: ['20px', '50px'],
+						rowGap: ['20px', '50px']
 					}}
 				>
 					{items.map(item => (
