@@ -8,53 +8,46 @@ import Breadcrumb from '../../../components/Portfolio/Breadcrumb';
 import RouteLink from '../../../components/RouteLink';
 import Tag from '../../../components/Tag';
 import Titlebar from '../../../components/Titlebar';
-import { useResourceDetails } from '../../../hooks/portfolio';
+import { client, useResourceDetails } from '../../../hooks/portfolio';
 
-const WorkItemDetailPage: NextPage = () => {
-	const { query } = useRouter();
-	const resourceDetails = useResourceDetails(query.itemId as string);
-
+const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, labels, story, gallery, links }) => {
 	return (
 		<>
 			<Head>
 				<title>
-					{query.itemId} | {query.category} | bzr
+					{name} | {type.fields.name} | bzr
 				</title>
 			</Head>
-			<Titlebar title={query.category as string} />
+			<Titlebar title={type.fields.name as string} />
 			<PageContainer my={[30, 50]}>
-				<Breadcrumb
-					category={query.category as PortfolioCategory}
-					resourceId={query.itemId + ''}
-					resourceName={resourceDetails?.name}
-				/>
+				<Breadcrumb category={type.fields.id as PortfolioCategory} resourceId={id} resourceName={name} />
 				<Heading fontSize="heading" fontWeight="600">
-					{resourceDetails?.name}
+					{name}
 				</Heading>
 				<Flex my={5} sx={{ gap: ['3px', '6px'] }} flexWrap="wrap">
-					{resourceDetails?.labels.map(label => (
+					{labels.map(label => (
 						<Tag fontSize={['12px', '16px']} fontFamily="body" fontWeight="600">
 							{label}
 						</Tag>
 					))}
 				</Flex>
-				{resourceDetails?.story && (
+				{story && (
 					<Box my={15}>
 						<Heading fontSize="body" fontWeight="400" color="secondary">
 							Story
 						</Heading>
 						<Text my={10} sx={{ whiteSpace: 'pre-line' }} fontFamily="body">
-							{resourceDetails.story}
+							{story}
 						</Text>
 					</Box>
 				)}
-				{resourceDetails?.links && (
+				{links && (
 					<Box my={10}>
 						<Heading my={5} fontSize="body" fontWeight="400" color="secondary">
 							Links
 						</Heading>
 						<Box>
-							{resourceDetails.links.map(link => (
+							{links.map(link => (
 								<Box>
 									{link.title && (
 										<Heading fontSize="body" fontWeight="400" color="primary">
@@ -69,7 +62,7 @@ const WorkItemDetailPage: NextPage = () => {
 						</Box>
 					</Box>
 				)}
-				{resourceDetails?.gallery && (
+				{gallery && (
 					<Box my={10} width="100%">
 						<Heading my={10} fontSize="body" fontWeight="400" color="secondary">
 							Gallery
@@ -83,9 +76,9 @@ const WorkItemDetailPage: NextPage = () => {
 								rowGap: ['20px', '50px']
 							}}
 						>
-							{resourceDetails.gallery.map(image => (
+							{gallery.map(image => (
 								<Box minWidth={200} maxWidth={350}>
-									<Image sx={{ objectFit: 'contain' }} src={image.url} />
+									<Image sx={{ objectFit: 'contain' }} src={image.fields.file.url} />
 								</Box>
 							))}
 						</Box>
@@ -94,6 +87,37 @@ const WorkItemDetailPage: NextPage = () => {
 			</PageContainer>
 		</>
 	);
+};
+
+export const getStaticPaths = async () => {
+	const { items } = await client.getEntries<{ id: string; type: { fields: { id: string } } }>({
+		content_type: 'resource'
+	});
+
+	return {
+		paths: items.map(item => ({
+			params: {
+				itemId: item.fields.id,
+				category: item.fields.type.fields.id
+			}
+		})),
+		fallback: false
+	};
+};
+
+export const getStaticProps = async context => {
+	const { itemId, category } = context.params;
+	const { items } = await client.getEntries<PortfolioResource>({
+		'content_type': 'resource',
+		'fields.id': itemId
+	});
+
+	return {
+		props: {
+			...items[0].fields
+		},
+		revalidate: 60
+	};
 };
 
 export default WorkItemDetailPage;

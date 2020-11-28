@@ -20,6 +20,7 @@ const PortfolioItemBox: FC<PortfolioItemBoxProps> = ({ name, isPinned, labels })
 		<Flex justifyContent="space-between" color="secondary">
 			<Heading
 				fontSize={[24, 32, 40]}
+				fontWeight="600"
 				color="primary"
 				flex={1}
 				sx={{ textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }}

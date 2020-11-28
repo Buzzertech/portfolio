@@ -42,7 +42,7 @@ const items = [
 const WorkListingPage: NextComponentType<
 	{ query: { category: PortfolioCategory } },
 	{},
-	{ items: Entry<PortfolioResource>[]; errors: any[] | undefined }
+	{ items: Entry<PortfolioResource>[] }
 > = ({ items }) => {
 	const { query } = useRouter();
 
@@ -65,7 +65,7 @@ const WorkListingPage: NextComponentType<
 					}}
 				>
 					{items.map(({ fields: item }) => (
-						<RouteLink href={`/work/${item.type}/${item.id}`} key={item.id}>
+						<RouteLink href={`/work/${item.type.fields.id}/${item.id}`} key={item.id}>
 							<PortfolioItemBox {...item} />
 						</RouteLink>
 					))}
@@ -75,16 +75,36 @@ const WorkListingPage: NextComponentType<
 	);
 };
 
-export const getInitialProps = async context => {
-	const { category } = context.query;
-	const { items, errors } = await client.getEntries<PortfolioResource>({
-		'content_type': 'resource',
-		'field.type.id': category
+export const getStaticPaths = async () => {
+	const { items, errors } = await client.getEntries<{ id: string }>({
+		content_type: 'resourceType'
 	});
 
 	return {
-		items,
-		errors
+		paths: items.map(item => ({
+			params: {
+				category: item.fields.id
+			}
+		})),
+		fallback: false
+	};
+};
+
+export const getStaticProps = async context => {
+	const { category } = context.params;
+	const { items, errors } = await client.getEntries<PortfolioResource>({
+		'content_type': 'resource',
+		'fields.type.sys.contentType.sys.id': 'resourceType',
+		'fields.type.fields.id': category
+	});
+
+	console.log(JSON.stringify({ items, errors }));
+
+	return {
+		props: {
+			items: items || []
+		},
+		revalidate: 60
 	};
 };
 export default WorkListingPage;
