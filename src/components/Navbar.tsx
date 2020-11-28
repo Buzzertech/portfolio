@@ -1,12 +1,8 @@
 import React, { FC } from 'react';
-import { Box, Flex, FlexProps, Heading } from 'rebass';
+import { Flex, FlexProps, Heading } from 'rebass';
 import RouteLink from './RouteLink';
 
-const Navbar: FC<{ title: string | false; displayTitle: boolean } & Omit<FlexProps, 'title' | 'children'>> = ({
-	title,
-	displayTitle,
-	...props
-}) => (
+const Navbar: FC<{ title?: string | false } & Omit<FlexProps, 'title' | 'children'>> = ({ title, ...props }) => (
 	<Flex
 		px={[10, 30, 50]}
 		py={10}
@@ -27,9 +23,10 @@ const Navbar: FC<{ title: string | false; displayTitle: boolean } & Omit<FlexPro
 			fontSize={[24, 32, 40]}
 			color="secondary"
 			sx={{
+				textTransform: 'lowercase',
 				position: 'relative',
 				willChange: 'transform',
-				transform: `translateY(${displayTitle ? '0%' : '150%'})`,
+				transform: `translateY(${!!title ? '0%' : '150%'})`,
 				transition: 'transform .2s ease-in-out'
 			}}
 		>

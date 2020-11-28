@@ -11,8 +11,7 @@ const Titlebar: FC<{ title: string }> = ({ title }) => {
 	return (
 		<>
 			<Navbar
-				displayTitle={!(inView && entry?.target)}
-				title={title}
+				title={!inView && entry?.target && title}
 				sx={{
 					position: 'sticky',
 					top: '0px',

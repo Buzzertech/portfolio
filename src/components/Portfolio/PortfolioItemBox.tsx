@@ -15,12 +15,11 @@ const PortfolioItemBox: FC<PortfolioItemBoxProps> = ({ name, isPinned, labels })
 		flexDirection="column"
 		px={16}
 		py={25}
-		sx={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'primary', cursor: 'pointer' }}
+		sx={{ borderWidth: '3px', borderStyle: 'solid', borderColor: 'primary', cursor: 'pointer' }}
 	>
 		<Flex justifyContent="space-between" color="secondary">
 			<Heading
 				fontSize={[24, 32, 40]}
-				fontWeight="600"
 				color="primary"
 				flex={1}
 				sx={{ textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }}
