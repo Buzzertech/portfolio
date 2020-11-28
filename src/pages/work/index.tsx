@@ -8,7 +8,7 @@ import { Box, Flex, Heading, Text } from 'rebass';
 import PageContainer from '../../components/PageContainer';
 import RouteLink from '../../components/RouteLink';
 import Titlebar from '../../components/Titlebar';
-import { client } from '../../hooks/portfolio';
+import { client } from '../../lib/contentful';
 import { constants } from '../../lib/constants';
 
 type ResourceType = {

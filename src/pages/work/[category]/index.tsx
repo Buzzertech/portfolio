@@ -10,34 +10,7 @@ import Breadcrumb from '../../../components/Portfolio/Breadcrumb';
 import PortfolioItemBox from '../../../components/Portfolio/PortfolioItemBox';
 import RouteLink from '../../../components/RouteLink';
 import Titlebar from '../../../components/Titlebar';
-import { client } from '../../../hooks/portfolio';
-
-const items = [
-	{
-		id: 'brawadis-2016',
-		name: 'Brawadis',
-		isPinned: true,
-		labels: ['Banner', 'Profile picture']
-	},
-	{
-		id: 'mrbeast',
-		name: 'MrBeast',
-		isPinned: true,
-		labels: ['Banner', 'Profile picture', 'twitter header']
-	},
-	{
-		id: 'carryminati-2016',
-		name: 'Carryminati',
-		isPinned: true,
-		labels: ['Banner', 'Profile picture']
-	},
-	{
-		id: 'serum-2017',
-		name: 'Serum',
-		isPinned: false,
-		labels: ['Banner', 'Profile picture']
-	}
-];
+import { client } from '../../../lib/contentful';
 
 const WorkListingPage: NextComponentType<
 	{ query: { category: PortfolioCategory } },
@@ -97,8 +70,6 @@ export const getStaticProps = async context => {
 		'fields.type.sys.contentType.sys.id': 'resourceType',
 		'fields.type.fields.id': category
 	});
-
-	console.log(JSON.stringify({ items, errors }));
 
 	return {
 		props: {

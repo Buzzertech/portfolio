@@ -8,7 +8,7 @@ import Breadcrumb from '../../../components/Portfolio/Breadcrumb';
 import RouteLink from '../../../components/RouteLink';
 import Tag from '../../../components/Tag';
 import Titlebar from '../../../components/Titlebar';
-import { client, useResourceDetails } from '../../../hooks/portfolio';
+import { client } from '../../../lib/contentful';
 
 const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, labels, story, gallery, links }) => {
 	return (
