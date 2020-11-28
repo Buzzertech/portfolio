@@ -24,7 +24,7 @@ const WorkItemDetailPage: NextPage = () => {
 			<Titlebar title={query.category as string} />
 			<PageContainer my={[30, 50]}>
 				<Breadcrumb
-					category={query.category as 'engineering' | 'design'}
+					category={query.category as PortfolioCategory}
 					resourceId={query.itemId + ''}
 					resourceName={resourceDetails?.name}
 				/>
