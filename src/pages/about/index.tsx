@@ -48,8 +48,13 @@ const AboutPage: NextPage<AboutPageDetails> = ({
 						gap: '20px'
 					}}
 				>
-					<Image src={profilePicture} sx={{ objectFit: 'contain' }} minWidth={300} />
-					<Box flex={1}>
+					<Image
+						src={profilePicture}
+						sx={{ objectFit: 'contain' }}
+						maxWidth={[300, 300, 500]}
+						maxHeight={[300, 300, 500]}
+					/>
+					<Box>
 						<Heading fontSize="heading" color="heading">
 							{heading}
 						</Heading>
