@@ -5,9 +5,9 @@ import { Flex, Text } from 'rebass';
 import RouteLink from '../RouteLink';
 
 type BreadcrumbProps = {
-	category: 'design' | 'engineering';
-	resourceName: string | undefined;
-	resourceId: string | undefined;
+	category: PortfolioCategory;
+	resourceName?: string | undefined;
+	resourceId?: string | undefined;
 };
 
 const Breadcrumb: FC<BreadcrumbProps> = ({ category, resourceId, resourceName }) => {

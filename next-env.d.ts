@@ -9,3 +9,8 @@ type PortfolioResource = {
 	links?: Array<{ title?: string; url: string }>;
 	gallery?: Array<{ url: string }>;
 };
+
+const enum PortfolioCategory {
+	DESIGN = 'design',
+	ENGINEERING = 'engineering'
+}

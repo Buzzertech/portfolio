@@ -26,7 +26,12 @@ const Navbar: FC<{ title: string | false; displayTitle: boolean } & Omit<FlexPro
 			letterSpacing={1}
 			fontSize={[24, 32, 40]}
 			color="secondary"
-			sx={{ transform: `translateY(${displayTitle ? '0%' : '150%'})`, transition: 'transform .2s ease-in-out' }}
+			sx={{
+				position: 'relative',
+				willChange: 'transform',
+				transform: `translateY(${displayTitle ? '0%' : '150%'})`,
+				transition: 'transform .2s ease-in-out'
+			}}
 		>
 			{title}
 		</Heading>
