@@ -14,9 +14,17 @@ const Breadcrumb: FC<BreadcrumbProps> = ({ category, resourceId, resourceName })
 	return (
 		<Flex
 			color="breadcrumb"
-			sx={{}}
-			sx={{ 'textTransform': 'capitalize', '*': { mx: '5px' }, 'fontFamily': 'body' }}
+			py={10}
+			sx={{
+				'textTransform': 'capitalize',
+				'*': { mx: '5px' },
+				'fontFamily': 'body',
+				'position': 'sticky',
+				'top': ['50px', '70px'],
+				'scrollMargin': '20px'
+			}}
 			width={['100%', 400]}
+			bg="background"
 			alignItems="center"
 		>
 			<RouteLink href={'/work'} asAnchor>
