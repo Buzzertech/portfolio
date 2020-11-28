@@ -8,7 +8,7 @@ import PageContainer from '../components/PageContainer';
 const IndexPage = () => (
 	<>
 		<Head>
-			<title>Home | Buzzertech</title>
+			<title>Home | bzr</title>
 		</Head>
 		<PageContainer justifyContent="center">
 			<Heading letterSpacing={-1.5} fontSize="heading" color="text">

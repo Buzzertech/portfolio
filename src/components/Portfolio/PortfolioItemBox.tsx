@@ -15,6 +15,8 @@ const PortfolioItemBox: FC<PortfolioItemBoxProps> = ({ name, isPinned, labels })
 		flexDirection="column"
 		px={16}
 		py={25}
+		minHeight={120}
+		justifyContent="space-between"
 		sx={{ borderWidth: '3px', borderStyle: 'solid', borderColor: 'primary', cursor: 'pointer' }}
 	>
 		<Flex justifyContent="space-between" color="secondary">
@@ -36,7 +38,12 @@ const PortfolioItemBox: FC<PortfolioItemBoxProps> = ({ name, isPinned, labels })
 			)}
 		</Flex>
 		<Flex>
-			<Text fontStyle="body" color="subText" fontFamily="body">
+			<Text
+				fontStyle="body"
+				color="subText"
+				fontFamily="body"
+				sx={{ textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }}
+			>
 				{labels.join(', ')}
 			</Text>
 		</Flex>

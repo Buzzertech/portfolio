@@ -71,7 +71,7 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 							display="grid"
 							width="100%"
 							sx={{
-								gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 350px))',
+								gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 3150px))',
 								columnGap: ['20px', '50px'],
 								rowGap: ['20px', '50px']
 							}}
