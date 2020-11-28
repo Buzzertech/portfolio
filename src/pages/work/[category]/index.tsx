@@ -1,3 +1,4 @@
+import { Entry, EntryCollection } from 'contentful';
 import { NextComponentType } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -9,6 +10,7 @@ import Breadcrumb from '../../../components/Portfolio/Breadcrumb';
 import PortfolioItemBox from '../../../components/Portfolio/PortfolioItemBox';
 import RouteLink from '../../../components/RouteLink';
 import Titlebar from '../../../components/Titlebar';
+import { client } from '../../../hooks/portfolio';
 
 const items = [
 	{
@@ -37,7 +39,11 @@ const items = [
 	}
 ];
 
-const WorkListingPage: NextComponentType = ({}) => {
+const WorkListingPage: NextComponentType<
+	{ query: { category: PortfolioCategory } },
+	{},
+	{ items: Entry<PortfolioResource>[]; errors: any[] | undefined }
+> = ({ items }) => {
 	const { query } = useRouter();
 
 	return (
@@ -58,8 +64,8 @@ const WorkListingPage: NextComponentType = ({}) => {
 						rowGap: ['20px', '20px', '50px']
 					}}
 				>
-					{items.map(item => (
-						<RouteLink href={`/work/${query.category}/${item.id}`} key={item.id}>
+					{items.map(({ fields: item }) => (
+						<RouteLink href={`/work/${item.type}/${item.id}`} key={item.id}>
 							<PortfolioItemBox {...item} />
 						</RouteLink>
 					))}
@@ -69,4 +75,16 @@ const WorkListingPage: NextComponentType = ({}) => {
 	);
 };
 
+export const getInitialProps = async context => {
+	const { category } = context.query;
+	const { items, errors } = await client.getEntries<PortfolioResource>({
+		'content_type': 'resource',
+		'field.type.id': category
+	});
+
+	return {
+		items,
+		errors
+	};
+};
 export default WorkListingPage;
