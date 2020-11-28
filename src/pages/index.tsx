@@ -18,13 +18,13 @@ const IndexPage = () => (
 				{constants.HOMEPAGE_BIO}
 			</Text>
 			<Flex width="100%" sx={{ fontFamily: 'body', fontWeight: 'body', color: 'primary' }}>
-				<RouteLink marginRight={5} href="/about">
+				<RouteLink asAnchor marginRight={5} href="/about">
 					About
 				</RouteLink>
-				<RouteLink mx={5} href="/work">
+				<RouteLink asAnchor mx={5} href="/work">
 					Work
 				</RouteLink>
-				<RouteLink marginLeft={5} href="/contact">
+				<RouteLink asAnchor marginLeft={5} href="/contact">
 					Contact
 				</RouteLink>
 			</Flex>
