@@ -60,6 +60,7 @@ const lightTheme: Theme = {
 		background: '#fff',
 		text: '#222222',
 		subText: '#a9a9a9',
+		breadcrumb: '#d9d9d9',
 		plain: 'white'
 	}
 };

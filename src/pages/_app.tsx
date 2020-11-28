@@ -10,7 +10,10 @@ const RootApp: FC<AppProps> = ({ Component, pageProps, router }) => (
 	<>
 		<Head>
 			<link rel="preconnect" href="https://fonts.gstatic.com" />
-			<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap" rel="stylesheet" />
+			<link
+				href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap"
+				rel="stylesheet"
+			/>
 		</Head>
 		<ThemeProvider theme={theme.light}>
 			<Flex flexDirection="column" bg="background" color="text" minHeight="100vh">
