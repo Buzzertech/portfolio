@@ -59,8 +59,7 @@ export const getStaticPaths = async () => {
 				category: item.fields.id
 			}
 		})),
-		fallback: false,
-		revalidate: 60
+		fallback: true
 	};
 };
 
