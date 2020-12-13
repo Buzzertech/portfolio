@@ -1,7 +1,7 @@
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { FC } from 'react';
-import { Flex, Text } from 'rebass';
+import { Flex, FlexProps } from 'rebass';
 import RouteLink from '../RouteLink';
 
 type BreadcrumbProps = {
@@ -10,7 +10,7 @@ type BreadcrumbProps = {
 	resourceId?: string | undefined;
 };
 
-const Breadcrumb: FC<BreadcrumbProps> = ({ category, resourceId, resourceName }) => {
+const Breadcrumb: FC<BreadcrumbProps & FlexProps> = ({ category, resourceId, resourceName, ...props }) => {
 	return (
 		<Flex
 			color="breadcrumb"
@@ -26,6 +26,7 @@ const Breadcrumb: FC<BreadcrumbProps> = ({ category, resourceId, resourceName })
 			width={['100%', 400]}
 			bg="background"
 			alignItems="center"
+			{...props}
 		>
 			<RouteLink href={'/work'} asAnchor>
 				Work

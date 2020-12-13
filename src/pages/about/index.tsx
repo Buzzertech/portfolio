@@ -20,15 +20,7 @@ type AboutPageDetails = {
 	socialMediaLinks: Array<{ type: string; label: string; url: string }>;
 };
 
-const AboutPage: NextPage<AboutPageDetails> = ({
-	heading,
-	description,
-	profilePicture: {
-		fields: {
-			file: { url: profilePicture }
-		}
-	}
-}) => {
+const AboutPage: NextPage<AboutPageDetails> = ({ heading, description, profilePicture }) => {
 	return (
 		<>
 			<Head>
@@ -49,7 +41,7 @@ const AboutPage: NextPage<AboutPageDetails> = ({
 					}}
 				>
 					<Image
-						src={profilePicture}
+						src={profilePicture?.fields?.file?.url}
 						sx={{ objectFit: 'contain' }}
 						maxWidth={[300, 300, 500]}
 						maxHeight={[300, 300, 500]}
@@ -74,7 +66,8 @@ export const getStaticProps = async () => {
 	});
 
 	return {
-		props: items[0].fields
+		props: items[0].fields,
+		revalidate: 60
 	};
 };
 

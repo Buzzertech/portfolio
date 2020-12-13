@@ -19,8 +19,14 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 				</title>
 			</Head>
 			<Titlebar title={type.fields.name as string} />
+			<Breadcrumb
+				px={[10, 30, 50]}
+				width={'100%'}
+				category={type.fields.id as PortfolioCategory}
+				resourceId={id}
+				resourceName={name}
+			/>
 			<PageContainer my={[30, 50]}>
-				<Breadcrumb category={type.fields.id as PortfolioCategory} resourceId={id} resourceName={name} />
 				<Heading fontSize="heading" fontWeight="600">
 					{name}
 				</Heading>
@@ -101,7 +107,8 @@ export const getStaticPaths = async () => {
 				category: item.fields.type.fields.id
 			}
 		})),
-		fallback: false
+		fallback: false,
+		revalidate: 60
 	};
 };
 

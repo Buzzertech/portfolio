@@ -24,8 +24,8 @@ const WorkListingPage: NextComponentType<
 				<title>{query.category || ''} | bzr</title>
 			</Head>
 			<Titlebar title={(query.category as string) || ''} />
+			<Breadcrumb px={[10, 30, 50]} width={'100%'} category={query.category as PortfolioCategory} />
 			<PageContainer my={2}>
-				<Breadcrumb category={query.category as PortfolioCategory} />
 				<Box
 					my={[20, 20, 50]}
 					display="grid"
@@ -59,7 +59,8 @@ export const getStaticPaths = async () => {
 				category: item.fields.id
 			}
 		})),
-		fallback: false
+		fallback: false,
+		revalidate: 60
 	};
 };
 

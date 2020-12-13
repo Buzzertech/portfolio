@@ -82,7 +82,8 @@ export const getStaticProps = async () => {
 	return {
 		props: {
 			socialHandles: items.map(item => item.fields)
-		}
+		},
+		revalidate: 60
 	};
 };
 

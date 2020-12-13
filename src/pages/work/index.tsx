@@ -59,7 +59,8 @@ export const getStaticProps = async () => {
 	return {
 		props: {
 			resourceTypes: items
-		}
+		},
+		revalidate: 60
 	};
 };
 
