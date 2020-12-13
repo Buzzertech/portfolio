@@ -1,7 +1,6 @@
-import { Entry, EntryCollection } from 'contentful';
+import { Entry } from 'contentful';
 import { NextComponentType } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { Box } from 'rebass';
@@ -50,7 +49,8 @@ const WorkListingPage: NextComponentType<
 
 export const getStaticPaths = async () => {
 	const { items, errors } = await client.getEntries<{ id: string }>({
-		content_type: 'resourceType'
+		content_type: 'resourceType',
+		select: ['fields.id']
 	});
 
 	return {
@@ -68,7 +68,8 @@ export const getStaticProps = async context => {
 	const { items, errors } = await client.getEntries<PortfolioResource>({
 		'content_type': 'resource',
 		'fields.type.sys.contentType.sys.id': 'resourceType',
-		'fields.type.fields.id': category
+		'fields.type.fields.id': category,
+		'select': ['fields.id', 'fields.type', 'fields.isPinned', 'fields.name', 'fields.labels']
 	});
 
 	return {
