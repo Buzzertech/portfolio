@@ -36,11 +36,13 @@ const WorkListingPage: NextComponentType<
 						rowGap: ['20px', '20px', '50px']
 					}}
 				>
-					{items.map(({ fields: item }) => (
-						<RouteLink href={`/work/${item.type.fields.id}/${item.id}`} key={item.id}>
-							<PortfolioItemBox {...item} />
-						</RouteLink>
-					))}
+					{items
+						.sort(item => -Number(item.fields.isPinned))
+						.map(({ fields: item }) => (
+							<RouteLink href={`/work/${item.type.fields.id}/${item.id}`} key={item.id}>
+								<PortfolioItemBox {...item} />
+							</RouteLink>
+						))}
 				</Box>
 			</PageContainer>
 		</>
