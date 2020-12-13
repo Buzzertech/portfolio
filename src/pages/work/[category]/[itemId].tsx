@@ -1,6 +1,5 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import React from 'react';
 import { Box, Flex, Heading, Image, Text } from 'rebass';
 import PageContainer from '../../../components/PageContainer';

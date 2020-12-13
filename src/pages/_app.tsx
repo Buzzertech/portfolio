@@ -6,7 +6,7 @@ import theme from '../lib/theme';
 import { AppProps } from 'next/app';
 import 'normalize.css';
 
-const RootApp: FC<AppProps> = ({ Component, pageProps, router }) => (
+const RootApp: FC<AppProps> = ({ Component, pageProps }) => (
 	<>
 		<Head>
 			<link rel="preconnect" href="https://fonts.gstatic.com" />
