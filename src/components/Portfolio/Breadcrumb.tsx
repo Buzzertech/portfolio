@@ -18,12 +18,10 @@ const Breadcrumb: FC<BreadcrumbProps & FlexProps> = ({ category, resourceId, res
 			sx={{
 				'textTransform': 'capitalize',
 				'*': { mx: '5px' },
-				'fontFamily': 'body',
-				'position': 'sticky',
-				'top': ['50px', '70px'],
-				'scrollMargin': '20px'
+				'fontFamily': 'body'
+				// 'position': 'sticky',
 			}}
-			width={['100%', 400]}
+			width={'100%'}
 			bg="background"
 			alignItems="center"
 			{...props}
