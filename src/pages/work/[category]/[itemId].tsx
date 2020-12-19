@@ -25,7 +25,7 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 				resourceId={id}
 				resourceName={name}
 			/>
-			<PageContainer my={[30, 50]}>
+			<PageContainer>
 				<Heading fontSize="heading" fontWeight="600">
 					{name}
 				</Heading>
@@ -38,7 +38,7 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 				</Flex>
 				{story && (
 					<Box my={15}>
-						<Heading fontSize="body" fontWeight="400" color="secondary">
+						<Heading fontSize="body" fontWeight="400">
 							Story
 						</Heading>
 						<Text my={10} sx={{ whiteSpace: 'pre-line' }} fontFamily="body">
@@ -48,7 +48,7 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 				)}
 				{links && (
 					<Box my={10}>
-						<Heading my={5} fontSize="body" fontWeight="400" color="secondary">
+						<Heading my={5} fontSize="body" fontWeight="400">
 							Links
 						</Heading>
 						<Box>
@@ -69,7 +69,7 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 				)}
 				{gallery && (
 					<Box my={10} width="100%">
-						<Heading my={10} fontSize="body" fontWeight="400" color="secondary">
+						<Heading my={10} fontSize="body" fontWeight="400">
 							Gallery
 						</Heading>
 						<Box
