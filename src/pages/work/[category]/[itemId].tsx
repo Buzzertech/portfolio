@@ -1,7 +1,8 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Flex, Heading, Image, Text } from 'rebass';
+import ImageViewer from '../../../components/ImageViewer';
 import PageContainer from '../../../components/PageContainer';
 import Breadcrumb from '../../../components/Portfolio/Breadcrumb';
 import RouteLink from '../../../components/RouteLink';
@@ -10,6 +11,7 @@ import Titlebar from '../../../components/Titlebar';
 import { client } from '../../../lib/contentful';
 
 const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, labels, story, gallery, links }) => {
+	const [expandedImage, setExpandedImage] = useState<string | null>(null);
 	return (
 		<>
 			<Head>
@@ -25,6 +27,7 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 				resourceId={id}
 				resourceName={name}
 			/>
+			{expandedImage && <ImageViewer onClose={() => setExpandedImage(null)} imageSrc={expandedImage} />}
 			<PageContainer>
 				<Heading fontSize="heading" fontWeight="600">
 					{name}
@@ -83,7 +86,11 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 						>
 							{gallery.map(image => (
 								<Box minWidth={200} maxWidth={350}>
-									<Image sx={{ objectFit: 'contain' }} src={image.fields.file.url} />
+									<Image
+										sx={{ objectFit: 'contain', cursor: 'zoom-in' }}
+										onClick={() => setExpandedImage(image.fields.file.url)}
+										src={image.fields.file.url}
+									/>
 								</Box>
 							))}
 						</Box>
