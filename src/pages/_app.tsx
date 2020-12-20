@@ -6,6 +6,15 @@ import theme from '../lib/theme';
 import { AppProps } from 'next/app';
 import 'normalize.css';
 
+(async function () {
+	if (window && typeof window.IntersectionObserver === 'undefined') {
+		console.log('loading intersection-observer polyfill');
+		// @ts-ignore
+		await import('intersection-observer');
+		console.log('loaded intersection-observer polyfill');
+	}
+})();
+
 const RootApp: FC<AppProps> = ({ Component, pageProps }) => (
 	<>
 		<Head>

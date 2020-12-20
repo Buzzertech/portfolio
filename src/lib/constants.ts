@@ -1,5 +1,5 @@
 export enum constants {
-	HOMEPAGE_BIO = 'Experienced fullstack developer and systems design enthusiast.',
+	HOMEPAGE_BIO = 'Software developer, graphic designer, systems design enthusiast.',
 	WORK_LANDING_PAGE_TITLE = 'Work',
 	ABOUT_PAGE_TITLE = 'About',
 	CONTACT_PAGE_TITLE = 'Contact'

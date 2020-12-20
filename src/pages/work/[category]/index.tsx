@@ -32,8 +32,8 @@ const WorkListingPage: NextComponentType<
 					width="100%"
 					sx={{
 						gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-						columnGap: ['20px', '20px', '50px'],
-						rowGap: ['20px', '20px', '50px']
+						gridColumnGap: ['20px', '20px', '50px'],
+						gridRowGap: ['20px', '20px', '50px']
 					}}
 				>
 					{items

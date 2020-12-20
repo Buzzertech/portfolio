@@ -51,8 +51,8 @@ const ContactPage: NextPage<ContactPageDetails> = ({ socialHandles }) => {
 					width="100%"
 					sx={{
 						gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-						columnGap: ['20px', '50px'],
-						rowGap: ['20px', '50px']
+						gridColumnGap: ['20px', '50px'],
+						gridRowGap: ['20px', '50px']
 					}}
 				>
 					{socialHandles.map(({ name, link, type }) => (

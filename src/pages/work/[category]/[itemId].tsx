@@ -49,7 +49,7 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 						</Text>
 					</Box>
 				)}
-				{links && (
+				{!!links?.length && (
 					<Box my={10}>
 						<Heading my={5} fontSize="body" fontWeight="400">
 							Links
@@ -70,7 +70,7 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 						</Box>
 					</Box>
 				)}
-				{gallery && (
+				{!!gallery?.length && (
 					<Box my={10} width="100%">
 						<Heading my={10} fontSize="body" fontWeight="400">
 							Gallery
@@ -80,8 +80,8 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 							width="100%"
 							sx={{
 								gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 315px))',
-								columnGap: ['20px', '50px'],
-								rowGap: ['20px', '50px']
+								gridColumnGap: ['20px', '50px'],
+								gridRowGap: ['20px', '50px']
 							}}
 						>
 							{gallery.map(image => (

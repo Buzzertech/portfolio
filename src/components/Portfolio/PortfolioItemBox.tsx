@@ -32,6 +32,7 @@ const PortfolioItemBox: FC<PortfolioItemBoxProps> = ({ name, isPinned, labels })
 			{isPinned && (
 				<FontAwesomeIcon
 					width="1em"
+					height="1em"
 					icon={faThumbtack}
 					style={{ transform: 'rotate(45deg)' }}
 					title="Pinned item"

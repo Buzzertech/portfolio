@@ -1,10 +1,3 @@
-(async function () {
-	if (typeof window?.IntersectionObserver === 'undefined') {
-		// @ts-ignore
-		await import('intersection-observer');
-	}
-})();
-
 import React, { FC } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Heading } from 'rebass';
@@ -33,6 +26,7 @@ const Titlebar: FC<{ title: string }> = ({ title }) => {
 				letterSpacing={15}
 				color="secondary"
 				px={[10, 30, 50]}
+				py={10}
 				sx={{ textTransform: 'lowercase', wordBreak: 'break-word' }}
 				ref={ref}
 			>
