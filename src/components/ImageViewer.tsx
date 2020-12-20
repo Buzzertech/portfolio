@@ -27,7 +27,7 @@ const ImageViewer: FC<ImageViewerProps> = ({ imageSrc, onClose }) => {
 			width="100%"
 			height="100%"
 			id="image-viewer"
-			onClick={event => event.target.id === 'image-viewer' && onClose && onClose()}
+			onClick={(event: any) => event.target.id === 'image-viewer' && onClose && onClose()}
 			p={[10, 100]}
 		>
 			<Button
