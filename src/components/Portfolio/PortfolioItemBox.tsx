@@ -25,6 +25,7 @@ const PortfolioItemBox: FC<PortfolioItemBoxProps> = ({ name, isPinned, labels })
 				color="primary"
 				flex={1}
 				sx={{ textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }}
+				title={name}
 			>
 				{name}
 			</Heading>
