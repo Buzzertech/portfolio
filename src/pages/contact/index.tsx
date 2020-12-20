@@ -63,6 +63,7 @@ const ContactPage: NextPage<ContactPageDetails> = ({ socialHandles }) => {
 								color="primary"
 								flex={1}
 								sx={{ textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }}
+								title={name}
 							>
 								{name}
 							</Heading>
