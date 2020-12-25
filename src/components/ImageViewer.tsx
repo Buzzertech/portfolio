@@ -1,6 +1,6 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Box, Button, Flex, Image } from 'rebass';
 
 type ImageViewerProps = {
@@ -9,6 +9,15 @@ type ImageViewerProps = {
 };
 
 const ImageViewer: FC<ImageViewerProps> = ({ imageSrc, onClose }) => {
+	useEffect(() => {
+		const cb = (e: KeyboardEvent) => {
+			e.key === 'Escape' && onClose && onClose();
+		};
+		document.addEventListener('keyup', cb);
+
+		return () => document.removeEventListener('keyup', cb);
+	}, [imageSrc, onClose]);
+
 	return (
 		<Flex
 			sx={{

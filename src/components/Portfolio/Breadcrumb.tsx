@@ -13,13 +13,12 @@ type BreadcrumbProps = {
 const Breadcrumb: FC<BreadcrumbProps & FlexProps> = ({ category, resourceId, resourceName, ...props }) => {
 	return (
 		<Flex
-			color="breadcrumb"
+			color="primary"
 			py={10}
 			sx={{
 				'textTransform': 'capitalize',
 				'*': { mx: '5px' },
 				'fontFamily': 'body'
-				// 'position': 'sticky',
 			}}
 			width={'100%'}
 			bg="background"
@@ -36,9 +35,7 @@ const Breadcrumb: FC<BreadcrumbProps & FlexProps> = ({ category, resourceId, res
 			{resourceId && (
 				<>
 					<FontAwesomeIcon width={8} icon={faChevronRight} />
-					<RouteLink href={`/work/${category}/${resourceId}`} asAnchor>
-						{resourceName}
-					</RouteLink>
+					{resourceName}
 				</>
 			)}
 		</Flex>

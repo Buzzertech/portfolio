@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
-import React, { useState } from 'react';
-import { Box, Flex, Heading, Image, Text } from 'rebass';
+import React from 'react';
+import { Box, Flex, Heading, Text } from 'rebass';
 import ImageViewer from '../../../components/ImageViewer';
 import PageContainer from '../../../components/PageContainer';
 import Breadcrumb from '../../../components/Portfolio/Breadcrumb';
@@ -9,9 +9,11 @@ import RouteLink from '../../../components/RouteLink';
 import Tag from '../../../components/Tag';
 import Titlebar from '../../../components/Titlebar';
 import { client } from '../../../lib/contentful';
+import ShimmerImage from '../../../components/ShimmerImage';
+import { useRouter } from 'next/router';
 
 const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, labels, story, gallery, links }) => {
-	const [expandedImage, setExpandedImage] = useState<string | null>(null);
+	const router = useRouter();
 	return (
 		<>
 			<Head>
@@ -27,14 +29,19 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 				resourceId={id}
 				resourceName={name}
 			/>
-			{expandedImage && <ImageViewer onClose={() => setExpandedImage(null)} imageSrc={expandedImage} />}
+			{router.query.expandedImg && !!gallery?.length && (
+				<ImageViewer
+					onClose={() => router.push(window.location.pathname, undefined, { shallow: true })}
+					imageSrc={gallery[Number(router.query.expandedImg as string)].fields.file.url}
+				/>
+			)}
 			<PageContainer>
 				<Heading fontSize="heading" fontWeight="600">
 					{name}
 				</Heading>
 				<Flex my={5} sx={{ gap: ['3px', '6px'] }} flexWrap="wrap">
 					{labels.map(label => (
-						<Tag fontSize={['12px', '16px']} fontFamily="body" fontWeight="600">
+						<Tag key={`label_${label}`} fontSize={['12px', '16px']} fontFamily="body" fontWeight="600">
 							{label}
 						</Tag>
 					))}
@@ -84,11 +91,17 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 								gridRowGap: ['20px', '50px']
 							}}
 						>
-							{gallery.map(image => (
-								<Box minWidth={200} maxWidth={350}>
-									<Image
+							{gallery.map((image, index) => (
+								<Box minWidth={200} maxWidth={350} key={image.sys.id}>
+									<ShimmerImage
+										shimmerHeight={200}
+										shimmerWidth={350}
 										sx={{ objectFit: 'contain', cursor: 'zoom-in' }}
-										onClick={() => setExpandedImage(image.fields.file.url)}
+										onClick={() =>
+											router.push(`${router.asPath}?expandedImg=${index}`, undefined, {
+												shallow: true
+											})
+										}
 										src={image.fields.file.url}
 									/>
 								</Box>

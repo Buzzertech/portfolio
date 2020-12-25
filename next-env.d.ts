@@ -9,7 +9,7 @@ type PortfolioResource = {
 	labels: Array<string>;
 	story?: string;
 	links?: Array<{ title?: string; url: string }>;
-	gallery?: Array<{ fields: { file: { url: string } } }>;
+	gallery?: Array<{ sys: { id: string }; fields: { file: { url: string } } }>;
 };
 
 const enum PortfolioCategory {
