@@ -11,16 +11,8 @@ type ImageViewerProps = {
 const ImageViewer: FC<ImageViewerProps> = ({ imageSrc, onClose }) => {
 	useEffect(() => {
 		const keyUpCb = (e: KeyboardEvent) => e.key === 'Escape' && onClose && onClose();
-		const hashchangeCb = _ => {
-			location.hash !== '#expand' && onClose && onClose();
-		};
-
 		document.addEventListener('keyup', keyUpCb);
-		window.addEventListener('hashchange', hashchangeCb);
-		return () => {
-			document.removeEventListener('keyup', keyUpCb);
-			window.removeEventListener('hashchange', hashchangeCb);
-		};
+		return () => document.removeEventListener('keyup', keyUpCb);
 	}, [imageSrc, onClose]);
 
 	return (

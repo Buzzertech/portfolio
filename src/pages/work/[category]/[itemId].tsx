@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Box, Flex, Heading, Text } from 'rebass';
 import ImageViewer from '../../../components/ImageViewer';
 import PageContainer from '../../../components/PageContainer';
@@ -10,10 +10,17 @@ import Tag from '../../../components/Tag';
 import Titlebar from '../../../components/Titlebar';
 import { client } from '../../../lib/contentful';
 import ShimmerImage from '../../../components/ShimmerImage';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+
+const IMAGE_ID_PATTERN = /\#imageId\=(.*)/i;
 
 const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, labels, story, gallery, links }) => {
-	const [expandedImage, setExpandedImage] = useState<string | null>(null);
-	const [scrollY, setScrollY] = useState(0);
+	const router = useRouter();
+	const imageId = useMemo(
+		() => (typeof window !== 'undefined' ? Number(location.hash.match(IMAGE_ID_PATTERN)?.[1]) : -1),
+		[typeof location !== 'undefined' && location.hash]
+	);
 
 	return (
 		<>
@@ -30,14 +37,10 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 				resourceId={id}
 				resourceName={name}
 			/>
-			{expandedImage && (
+			{!!gallery?.length && gallery[imageId] && (
 				<ImageViewer
-					onClose={() => [
-						setExpandedImage(null),
-						(window.location.hash = ''),
-						window.scrollTo({ top: scrollY })
-					]}
-					imageSrc={expandedImage}
+					onClose={() => router.replace(location.pathname, undefined, { shallow: true })}
+					imageSrc={gallery[imageId].fields.file.url}
 				/>
 			)}
 			<PageContainer>
@@ -45,8 +48,13 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 					{name}
 				</Heading>
 				<Flex my={5} sx={{ gap: ['3px', '6px'] }} flexWrap="wrap">
-					{labels.map(label => (
-						<Tag key={`label_${label}`} fontSize={['12px', '16px']} fontFamily="body" fontWeight="600">
+					{labels.map((label, index) => (
+						<Tag
+							key={`label_${label}_${index}`}
+							fontSize={['12px', '16px']}
+							fontFamily="body"
+							fontWeight="600"
+						>
 							{label}
 						</Tag>
 					))}
@@ -104,20 +112,24 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 								justifyContent: ['center', 'flex-start']
 							}}
 						>
-							{gallery.map(image => (
+							{gallery.map((image, index) => (
 								<Box minWidth={200} maxWidth={350} key={image.sys.id}>
-									<a href={'#expand'}>
-										<ShimmerImage
-											shimmerHeight={200}
-											shimmerWidth={350}
-											sx={{ objectFit: 'contain', cursor: 'zoom-in' }}
-											onClick={() => [
-												setExpandedImage(image.fields.file.url),
-												setScrollY(window.scrollY)
-											]}
-											src={image.fields.file.url}
-										/>
-									</a>
+									<Link
+										href={`${
+											typeof location !== 'undefined' && location.pathname
+										}#imageId=${index}`}
+										shallow
+										scroll={false}
+									>
+										<a>
+											<ShimmerImage
+												shimmerHeight={200}
+												shimmerWidth={350}
+												sx={{ objectFit: 'contain', cursor: 'zoom-in' }}
+												src={image.fields.file.url}
+											/>
+										</a>
+									</Link>
 								</Box>
 							))}
 						</Box>
