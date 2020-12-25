@@ -58,18 +58,25 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 				)}
 				{!!links?.length && (
 					<Box my={10}>
-						<Heading my={5} fontSize="body" fontWeight="400">
+						<Heading my={10} fontSize="body" fontWeight="400">
 							Links
 						</Heading>
 						<Box>
 							{links.map(link => (
-								<Box>
+								<Box my={15}>
 									{link.title && (
-										<Heading fontSize="body" fontWeight="400" color="primary">
+										<Heading my={5} fontSize="body" fontWeight="400" color="primary">
 											{link.title}
 										</Heading>
 									)}
-									<RouteLink target="_blank" rel="noopener" href={link.url} asAnchor>
+									<RouteLink
+										fontSize="body"
+										sx={{ fontFamily: 'body' }}
+										target="_blank"
+										rel="noopener"
+										href={link.url}
+										asAnchor
+									>
 										{link.url}
 									</RouteLink>
 								</Box>
