@@ -2,7 +2,7 @@ import { Entry } from 'contentful';
 import { NextComponentType } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Box } from 'rebass';
 import PageContainer from '../../../components/PageContainer';
 import Breadcrumb from '../../../components/Portfolio/Breadcrumb';
@@ -36,13 +36,11 @@ const WorkListingPage: NextComponentType<
 						gridRowGap: ['20px', '20px', '50px']
 					}}
 				>
-					{items
-						.sort(item => -Number(item.fields.isPinned))
-						.map(({ fields: item }) => (
-							<RouteLink href={`/work/${item.type.fields.id}/${item.id}`} key={item.id}>
-								<PortfolioItemBox {...item} />
-							</RouteLink>
-						))}
+					{items.map(({ fields: item }) => (
+						<RouteLink href={`/work/${item.type.fields.id}/${item.id}`} key={item.id}>
+							<PortfolioItemBox isPinned={item.isPinned} labels={item.labels} name={item.name} />
+						</RouteLink>
+					))}
 				</Box>
 			</PageContainer>
 		</>
@@ -76,7 +74,7 @@ export const getStaticProps = async context => {
 
 	return {
 		props: {
-			items: items || []
+			items: (items || []).sort(item => -Number(item.fields.isPinned))
 		},
 		revalidate: 60
 	};
