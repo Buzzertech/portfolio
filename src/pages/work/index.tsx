@@ -40,7 +40,7 @@ const WorkLandingPage: NextPage<{ resourceTypes: Entry<ResourceType>[] }> = ({ r
 							</Flex>
 						</RouteLink>
 						{type.fields.description && (
-							<Text my={30} fontSize={['14px', '24px']} fontFamily="body">
+							<Text my={[10, 30]} fontSize={['14px', '24px']} fontFamily="body">
 								{type.fields.description}
 							</Text>
 						)}

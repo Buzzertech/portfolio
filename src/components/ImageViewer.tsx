@@ -11,7 +11,9 @@ type ImageViewerProps = {
 const ImageViewer: FC<ImageViewerProps> = ({ imageSrc, onClose }) => {
 	useEffect(() => {
 		const keyUpCb = (e: KeyboardEvent) => e.key === 'Escape' && onClose && onClose();
-		const hashchangeCb = _ => location.hash !== '#expand' && onClose && onClose();
+		const hashchangeCb = _ => {
+			location.hash !== '#expand' && onClose && onClose();
+		};
 
 		document.addEventListener('keyup', keyUpCb);
 		window.addEventListener('hashchange', hashchangeCb);
@@ -40,7 +42,7 @@ const ImageViewer: FC<ImageViewerProps> = ({ imageSrc, onClose }) => {
 			height="100%"
 			id="image-viewer"
 			onClick={(event: any) => event.target.id === 'image-viewer' && onClose && onClose()}
-			p={[10, 100]}
+			p={10}
 		>
 			<Button
 				sx={{ position: 'absolute', width: '18px', top: '10px', right: '15px', boxShadow: 'none' }}

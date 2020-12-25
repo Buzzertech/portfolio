@@ -13,6 +13,7 @@ import ShimmerImage from '../../../components/ShimmerImage';
 
 const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, labels, story, gallery, links }) => {
 	const [expandedImage, setExpandedImage] = useState<string | null>(null);
+	const [scrollY, setScrollY] = useState(0);
 
 	return (
 		<>
@@ -31,12 +32,16 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 			/>
 			{expandedImage && (
 				<ImageViewer
-					onClose={() => [setExpandedImage(null), (window.location.hash = '')]}
+					onClose={() => [
+						setExpandedImage(null),
+						(window.location.hash = ''),
+						window.scrollTo({ top: scrollY })
+					]}
 					imageSrc={expandedImage}
 				/>
 			)}
 			<PageContainer>
-				<Heading fontSize="heading" fontWeight="600">
+				<Heading fontSize="heading" fontWeight="600" width="100%" sx={{ overflowWrap: 'break-word' }}>
 					{name}
 				</Heading>
 				<Flex my={5} sx={{ gap: ['3px', '6px'] }} flexWrap="wrap">
@@ -95,7 +100,8 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 							sx={{
 								gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 315px))',
 								gridColumnGap: ['20px', '50px'],
-								gridRowGap: ['20px', '50px']
+								gridRowGap: ['20px', '50px'],
+								justifyContent: ['center', 'flex-start']
 							}}
 						>
 							{gallery.map(image => (
@@ -105,7 +111,10 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 											shimmerHeight={200}
 											shimmerWidth={350}
 											sx={{ objectFit: 'contain', cursor: 'zoom-in' }}
-											onClick={() => setExpandedImage(image.fields.file.url)}
+											onClick={() => [
+												setExpandedImage(image.fields.file.url),
+												setScrollY(window.scrollY)
+											]}
 											src={image.fields.file.url}
 										/>
 									</a>

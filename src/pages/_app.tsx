@@ -18,6 +18,10 @@ import 'normalize.css';
 const RootApp: FC<AppProps> = ({ Component, pageProps }) => (
 	<>
 		<Head>
+			<meta
+				content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=3.0,user-scalable=yes"
+				name="viewport"
+			/>
 			<link rel="preconnect" href="https://fonts.gstatic.com" />
 			<link
 				href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap"

@@ -23,6 +23,7 @@ const Breadcrumb: FC<BreadcrumbProps & FlexProps> = ({ category, resourceId, res
 			width={'100%'}
 			bg="background"
 			alignItems="center"
+			flexWrap="wrap"
 			{...props}
 		>
 			<RouteLink href={'/work'} asAnchor>
