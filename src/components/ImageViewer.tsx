@@ -1,12 +1,30 @@
+import styled from '@emotion/styled';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { FC, useEffect } from 'react';
 import { Box, Button, Flex, Image } from 'rebass';
+import dynamic from 'next/dynamic';
 
 type ImageViewerProps = {
 	imageSrc: string;
 	onClose?: () => void;
 };
+
+const Container = styled(Flex)`
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 2;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+	cursor: zoom-out;
+`;
 
 const ImageViewer: FC<ImageViewerProps> = ({ imageSrc, onClose }) => {
 	useEffect(() => {
@@ -16,25 +34,9 @@ const ImageViewer: FC<ImageViewerProps> = ({ imageSrc, onClose }) => {
 	}, [imageSrc, onClose]);
 
 	return (
-		<Flex
-			sx={{
-				cursor: 'zoom-out',
-				position: 'fixed',
-				top: 0,
-				left: 0,
-				bottom: 0,
-				right: 0,
-				background: 'rgba(0,0,0,.8)',
-				backdropFilter: 'blur(10px) grayscale(100%)',
-				zIndex: 2
-			}}
-			justifyContent="center"
-			alignItems="center"
-			width="100%"
-			height="100%"
+		<Container
 			id="image-viewer"
 			onClick={(event: any) => event.target.id === 'image-viewer' && onClose && onClose()}
-			p={10}
 		>
 			<Button
 				sx={{ position: 'absolute', width: '18px', top: '10px', right: '15px', boxShadow: 'none' }}
@@ -46,8 +48,8 @@ const ImageViewer: FC<ImageViewerProps> = ({ imageSrc, onClose }) => {
 			<Box sx={{ transform: 'scale(.8)', cursor: 'initial' }}>
 				<Image sx={{ objectFit: 'contain' }} src={imageSrc} />
 			</Box>
-		</Flex>
+		</Container>
 	);
 };
 
-export default ImageViewer;
+export default dynamic(async () => ImageViewer, { ssr: false });

@@ -41,10 +41,11 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 				<ImageViewer
 					onClose={() => router.replace(location.pathname, undefined, { shallow: true })}
 					imageSrc={gallery[imageId].fields.file.url}
+					key={'image-viewer'}
 				/>
 			)}
 			<PageContainer>
-				<Heading fontSize="heading" fontWeight="600" width="100%" sx={{ overflowWrap: 'break-word' }}>
+				<Heading fontSize="heading" fontWeight="800" width="100%" sx={{ overflowWrap: 'break-word' }}>
 					{name}
 				</Heading>
 				<Flex my={5} sx={{ gap: ['3px', '6px'] }} flexWrap="wrap">
@@ -61,7 +62,7 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 				</Flex>
 				{story && (
 					<Box my={15}>
-						<Heading fontSize="body" fontWeight="400">
+						<Heading fontSize="body" fontWeight="600">
 							Story
 						</Heading>
 						<Text my={10} sx={{ whiteSpace: 'pre-line' }} fontFamily="body">
@@ -71,7 +72,7 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 				)}
 				{!!links?.length && (
 					<Box my={10}>
-						<Heading my={10} fontSize="body" fontWeight="400">
+						<Heading my={10} fontSize="body" fontWeight="600">
 							Links
 						</Heading>
 						<Box>
@@ -99,7 +100,7 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 				)}
 				{!!gallery?.length && (
 					<Box my={10} width="100%">
-						<Heading my={10} fontSize="body" fontWeight="400">
+						<Heading my={10} fontSize="body" fontWeight="600">
 							Gallery
 						</Heading>
 						<Box
