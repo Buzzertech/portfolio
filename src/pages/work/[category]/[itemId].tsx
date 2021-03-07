@@ -90,6 +90,13 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 										target="_blank"
 										rel="noopener"
 										href={link.url}
+										onClick={() =>
+											event({
+												action: EVENT_ACTIONS.CLICK_PORTFOLIO_LINK_ITEM,
+												category: `${type.fields.name}, ${name}`,
+												label: link.url
+											})
+										}
 										asAnchor
 									>
 										{link.url}
@@ -122,7 +129,7 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 									onClick={() =>
 										event({
 											action: EVENT_ACTIONS.VIEW_GALLERY_ITEM,
-											category: type.fields.name,
+											category: `${type.fields.name}, ${name}`,
 											label: image.fields.file.url
 										})
 									}

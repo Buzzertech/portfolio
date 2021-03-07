@@ -8,7 +8,8 @@ export const pageview = (url: URL) => {
 
 export enum EVENT_ACTIONS {
 	VIEW_GALLERY_ITEM = 'view_gallery_item',
-	CLICK_CONTACT_ITEM = 'click_contact_item'
+	CLICK_CONTACT_ITEM = 'click_contact_item',
+	CLICK_PORTFOLIO_LINK_ITEM = 'click_portfolio_link_item'
 }
 
 type GTagEvent = {
