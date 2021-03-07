@@ -9,5 +9,8 @@ export const config = {
 	contentful: {
 		accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || '',
 		spaceId: process.env.CONTENTFUL_SPACE_ID || ''
+	},
+	analytics: {
+		trackingId: process.env.GA_TRACKING_ID || ''
 	}
 };

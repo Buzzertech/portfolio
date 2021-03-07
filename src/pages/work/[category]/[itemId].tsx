@@ -12,6 +12,7 @@ import { client } from '../../../lib/contentful';
 import ShimmerImage from '../../../components/ShimmerImage';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { event, EVENT_ACTIONS } from '../../../lib/analytics';
 
 const IMAGE_ID_PATTERN = /\#imageId\=(.*)/i;
 
@@ -114,7 +115,18 @@ const WorkItemDetailPage: NextPage<PortfolioResource> = ({ id, type, name, label
 							}}
 						>
 							{gallery.map((image, index) => (
-								<Box minWidth={200} maxWidth={350} key={image.sys.id}>
+								<Box
+									minWidth={200}
+									maxWidth={350}
+									key={image.sys.id}
+									onClick={() =>
+										event({
+											action: EVENT_ACTIONS.VIEW_GALLERY_ITEM,
+											category: type.fields.name,
+											label: image.fields.file.url
+										})
+									}
+								>
 									<Link
 										href={`${
 											typeof location !== 'undefined' && location.pathname

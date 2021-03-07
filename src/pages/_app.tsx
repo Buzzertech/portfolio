@@ -5,6 +5,8 @@ import { ThemeProvider } from 'emotion-theming';
 import theme from '../lib/theme';
 import { AppProps } from 'next/app';
 import 'normalize.css';
+import { Router } from 'next/router';
+import { pageview } from '../lib/analytics';
 
 (async function () {
 	if (window && typeof window.IntersectionObserver === 'undefined') {
@@ -14,6 +16,8 @@ import 'normalize.css';
 		console.log('loaded intersection-observer polyfill');
 	}
 })();
+
+Router.events.on('routeChangeComplete', (url, _opts) => pageview(url));
 
 const RootApp: FC<AppProps> = ({ Component, pageProps }) => (
 	<>
