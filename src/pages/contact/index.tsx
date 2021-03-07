@@ -12,6 +12,7 @@ import { faGithub, faInstagram, faLinkedin, faTwitter, faYoutube } from '@fortaw
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 import { useTheme } from 'emotion-theming';
+import { event, EVENT_ACTIONS } from '../../lib/analytics';
 
 const iconsMap = {
 	instagram: faInstagram,
@@ -56,7 +57,20 @@ const ContactPage: NextPage<ContactPageDetails> = ({ socialHandles }) => {
 					}}
 				>
 					{socialHandles.map(({ name, link, type }) => (
-						<Tile minHeight={100} key={name} target={'_blank'} asAnchor href={link}>
+						<Tile
+							minHeight={100}
+							key={name}
+							target={'_blank'}
+							asAnchor
+							href={link}
+							onClick={() =>
+								event({
+									action: EVENT_ACTIONS.CLICK_CONTACT_ITEM,
+									category: 'contact',
+									label: name
+								})
+							}
+						>
 							<FontAwesomeIcon width="3em" color={colors.primary} icon={iconsMap[type]} />
 							<Heading
 								fontSize={[24, 32, 40]}
